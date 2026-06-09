@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.5);
+  --accent-indigo: #6366f1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', ui-monospace, monospace;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Section card animation */
+.section-card {
+  opacity: 0;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glow on hover for cards */
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.2), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Loading pulse rings */
+.pulse-ring {
+  animation: pulseRing 2s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Severity badge glow */
+.badge-p1 {
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+}
+.badge-p2 {
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.4);
+}
+.badge-p3 {
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Form field focus glow */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+/* Progress step connector */
+.step-connector {
+  height: 2px;
+  background: linear-gradient(90deg, #10b981, #1e293b);
+}
+.step-connector-inactive {
+  height: 2px;
+  background: #1e293b;
+}
+
+/* Faster, tap-friendly buttons */
+button, a, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Hide scrollbar on preset swipe row while keeping scroll */
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+.overflow-x-auto {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Better tap target minimum on mobile */
+@media (max-width: 640px) {
+  button {
+    min-height: 44px;
+  }
+}
